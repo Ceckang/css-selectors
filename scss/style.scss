@@ -3,6 +3,8 @@ $primary-color: #d3a91f;
 $secondary-color: #141212;
 $width: 100%;
 $space: 20px;
+$test: #123;
+$randomNumber: random(360);
 
 html, body, p , ul{
     margin: 0;
@@ -11,36 +13,91 @@ html, body, p , ul{
   body {
     font: 100% $font-stack;
     color: $primary-color;
+
   
   }
   header{
       padding:$space*2 0 $space;
   }
+  nav{
+    width: $width*.9;
+    margin: 0 auto;
   ul {
     list-style: none;
 
     li {
         margin: 0;
         display: inline;
+        
         a {
             text-decoration: none;
             color: $secondary-color;
             background: $primary-color;
             padding: $space/4 $space/2;
+            &:hover{
+            background: $secondary-color;
+               // background: hue-rotate();
+//background-filter: hue-rotate(90deg);
+                color: $primary-color;
+                //-webkit-animation: hue 60s infinite linear;
+            transition: 1s;
+                
+                
+
+            }
         }
     }
+}
 }
 
 article {
     background: grayscale($primary-color);
     color: $secondary-color;
     padding: $space/2;
+    blockquote::before{
+        content: "\""
+    }
+    blockquote::after{
+        content: "\""
+    }
+
+    &:first-child{
+        background: white;
+    }
+    &:last-child{
+        background: white;
+    }
+    &::first-letter{
+        font-size: 150%;
+    }
+   
+    &:nth-child(4n + 2){
+        color: $primary-color;
+        grid-column: 2/5;        
+    }
+    &:nth-child(4n + 3){
+        color: $primary-color;
+        
+        grid-column: 1/4;        
+    }
 }
 main {
     width: $width*.9;
     margin: 0 auto;
-    background: lighten($secondary-color, 10%);
+    background: lighten($primary-color, 10%);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
     grid-gap: $space/2;
   }
+
+
+// @-webkit-keyframes hue {
+//     from {
+//       -webkit-filter: hue-rotate(0deg);
+//     }
+
+//     to {
+//       -webkit-filter: hue-rotate(360deg);
+//     }
+// }
